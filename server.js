@@ -1,11 +1,11 @@
 
 //READING
 
-const fs = require('fs');
-const data = fs.readFile('index.html', function(err, data){
-    if(err) throw err;
-    console.log(data.toString())
-})
+// const fs = require('fs');
+// const data = fs.readFile('index.html', function(err, data){
+//     if(err) throw err;
+//     console.log(data.toString())
+// })
 
 
 //CREATE A NEW FILE
@@ -34,3 +34,22 @@ const data = fs.readFile('index.html', function(err, data){
 //     if(err) throw err;
 //     console.log("File deleted")
 // })
+
+
+
+
+const http = require('http');
+const fs = require('fs');
+
+
+const server = http.createServer(function(req, res){
+    fs.readFile('index.html', function(err, data){
+        res.write(data);
+        res.end()
+    })
+
+})
+
+
+server.listen(3000);
+console.log("it's working")
